@@ -6,7 +6,7 @@
 - Open @Install.bat
 - Open @Run.bat
 
-## Import Libary
+## Import Library
 -requests
 - json
 - os
