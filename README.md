@@ -6,11 +6,24 @@
 - Ubuntu
 - Kali Linux
 
-## How To Run In Windows?
-- Download Skytool
-- Go to the folder where you put the Sky Tool file
-- Open @Install.bat
-- Open @Run.bat
+## Run In Windows
+Clone the project
+
+```bash
+  git clone https://github.com/SkypeG/Skytool
+```
+
+Install Library Skytool
+
+```bash
+  Run @Install.bat
+```
+
+Run Skytool
+
+```bash
+  Run @Run.bat
+```
 
 ## Run In Linux
 Clone the project
