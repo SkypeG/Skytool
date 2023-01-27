@@ -1,3 +1,8 @@
+#Create By Sky Inc.
+#Program By Sky Inc Team
+#https://discord.gg/Sk8uYaqnhz
+#Create By SkypeG
+
 import requests
 import json
 import os
@@ -11,6 +16,11 @@ import socket, random, time
 from pathlib import Path
 
 from colorama import Fore, Back, Style
+
+"""
+    http://ip-api.com/json/IP_ADDRES
+    http://www.google.com/maps/@LAT,LON,9z?hl=id
+"""
 
 print ("###############################################################################")
 print ("                                                                               ")
@@ -30,6 +40,7 @@ selection = input(host + "@Skytool :")
 if selection=="help":
     print("""
     MYIP : For Checking Your IP
+    IP : Fo Check Data From An Ip Address
     PWGEN : For Generate Secure Password
     DDoS : DDoS Tool
    """)
@@ -71,3 +82,27 @@ if selection=="DDoS":
         s.send(random._urandom(10)*1000)
         print(f"Send: {i}", end='\r')
         time.sleep(sleep)
+
+if selection=="ip":
+    ipaddress = input("IP Address : ")
+iprequest = requests.get(f"http://ip-api.com/json/{ipaddress}")
+
+if iprequest.status_code == 200:
+	ipdata = json.loads(iprequest.text)
+
+if ipdata["status"] == "success":
+    print("Country :", ipdata["country"], ipdata["countryCode"])
+    print("Region :", ipdata["region"], ipdata["regionName"])
+    print("City :", ipdata["city"])
+    print("Zip :", ipdata["zip"])
+    lat = ipdata["lat"]
+    lon = ipdata["lon"]
+    print("Location :", lat, ",", lon)
+
+    maps = f"https://www.google.com/maps/@{lat},{lon},9z"
+    print(f"Maps : {maps}")
+
+    print("Timezone :", ipdata["timezone"])
+    print("ISP :", ipdata["isp"])
+    print("IP Address :", ipdata["query"])
+
