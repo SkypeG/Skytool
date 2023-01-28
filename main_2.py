@@ -1,3 +1,8 @@
+#Create By Sky Inc.
+#Program By Sky Inc Team
+#https://discord.gg/Sk8uYaqnhz
+#Create By SkypeG
+
 import requests
 import json
 import os
@@ -13,6 +18,8 @@ import pycountry
 import folium
 import os
 import pyfiglet
+import string
+import secrets
 
 from colorama import Fore, Back, Style
 from tqdm import tqdm
@@ -39,6 +46,7 @@ if selection=="help":
     IP : Fo Check Data From An Ip Address
     PWGEN : For Generate Secure Password
     DDoS : DDoS Tool
+    Wifi : Check You Wifi Pass
    """)
 
 if selection=="customascii":
@@ -59,16 +67,10 @@ if selection=="myip":
     print("Ip :",ip)
 
 if selection=="pwgen":
-    lower = "abcdefghijklmnopqrstuvwxyz"
-    upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    number = "0123456789"
-    symbols = "!@#$%^&*()."
+    alphabet = string.ascii_letters + string.digits
+    password = ''.join(secrets.choice(alphabet) for i in range(16))
 
-    string = lower + upper + number + symbols
-    lenght = input("Input The PW Lenght :")
-    pwgen = "".join(random.sample(string,lenght))
-
-    print("The Password Is :" + pwgen)
+    print("The Password Is :" + password)
 
 if selection=="DDoS":
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -111,3 +113,12 @@ if selection=="trackphonenumber":
   folium.Marker([lat,lng],popup=location).add_to(myMap)
   myMap.save("mylocation.html")
   os.system("mylocation.html")
+
+if selection=="wifi":
+    import wifi
+
+
+
+
+
+
