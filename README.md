@@ -56,6 +56,12 @@ Run Skytool
 - colorama
 - socket, random, time
 - pathlib import Path
+- PhoneNumber
+- pycountry
+- pyfiglet
+- folium
+- tqdm
+- opencage
 
 ## Command
 *You can check it using the help command*
