@@ -13,14 +13,33 @@ import pyautogui
 import random
 import colorama
 import socket, random, time
-from pathlib import Path
+import phonenumbers
+import pycountry
+import folium
+import os
+import pyfiglet
 
 from colorama import Fore, Back, Style
+from tqdm import tqdm
+from pathlib import Path
+from phonenumbers import geocoder
+from phonenumbers import carrier
+from phonenumbers.phonenumberutil import region_code_for_country_code
+from phonenumbers.phonenumberutil import region_code_for_number
+from opencage.geocoder import OpenCageGeocode
 
 """
     http://ip-api.com/json/IP_ADDRES
     http://www.google.com/maps/@LAT,LON,9z?hl=id
 """
+
+for _ in tqdm(range(100),
+    desc = "Loading...",
+    ascii = False,ncols=75):
+    time.sleep(0.05)
+
+ascii_banner = pyfiglet.figlet_format("Skytool")
+print(ascii_banner)
 
 print ("###############################################################################")
 print ("                                                                               ")
@@ -39,11 +58,16 @@ selection = input(host + "@Skytool :")
 
 if selection=="help":
     print("""
+    CUSTOMASCII : Print Your Ascii Art Text
     MYIP : For Checking Your IP
     IP : Fo Check Data From An Ip Address
     PWGEN : For Generate Secure Password
     DDoS : DDoS Tool
    """)
+
+if selection=="customascii":
+    ascii_banner_custom = pyfiglet.figlet_format(input("Ascii :"))
+    print(ascii_banner_custom)
 
 if selection=="credits":
     print("""
@@ -84,25 +108,36 @@ if selection=="DDoS":
         time.sleep(sleep)
 
 if selection=="ip":
-    ipaddress = input("IP Address : ")
-iprequest = requests.get(f"http://ip-api.com/json/{ipaddress}")
+    import IPGEO
 
-if iprequest.status_code == 200:
-	ipdata = json.loads(iprequest.text)
+if os.path.exists("mylocation.html"):
+  os.remove("mylocation.html")
 
-if ipdata["status"] == "success":
-    print("Country :", ipdata["country"], ipdata["countryCode"])
-    print("Region :", ipdata["region"], ipdata["regionName"])
-    print("City :", ipdata["city"])
-    print("Zip :", ipdata["zip"])
-    lat = ipdata["lat"]
-    lon = ipdata["lon"]
-    print("Location :", lat, ",", lon)
+if selection=="trackphonenumber":
+  number = input("Enter Phone Number: ")
+  pn = phonenumbers.parse(number)
 
-    maps = f"https://www.google.com/maps/@{lat},{lon},9z"
-    print(f"Maps : {maps}")
+  country = pycountry.countries.get(alpha_2=region_code_for_number(pn))
+  location = country.name
+  print(location)
 
-    print("Timezone :", ipdata["timezone"])
-    print("ISP :", ipdata["isp"])
-    print("IP Address :", ipdata["query"])
+  print(carrier.name_for_number(phonenumbers.parse(number), "en"))
+
+  key = input("Enter Your API KEY: ")
+  geocoder = OpenCageGeocode(key)
+  query = str(location)
+  results = geocoder.geocode(query)
+  lat = results[0]['geometry']['lat']
+  lng = results[0]['geometry']['lng']
+  print(lat,lng)
+
+  myMap = folium.Map(location=[lat , lng], zoom_start=9)
+  folium.Marker([lat,lng],popup=location).add_to(myMap)
+  myMap.save("mylocation.html")
+  os.system("mylocation.html")
+
+
+
+
+
 
