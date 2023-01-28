@@ -10,38 +10,38 @@
 Clone the project
 
 ```bash
-  git clone https://github.com/SkypeG/Skytool
+git clone https://github.com/SkypeG/Skytool
 ```
 
 Install Library Skytool
 
 ```bash
-  Run @Install.bat
+Run @Install.bat
 ```
 
 Run Skytool
 
 ```bash
-  Run @Run.bat
+Run @Run.bat
 ```
 
 ## Run In Linux
 Clone the project
 
 ```bash
-  git clone https://github.com/SkypeG/Skytool
+git clone https://github.com/SkypeG/Skytool
 ```
 
 Go to the project directory
 
 ```bash
-  cd Skytool
+cd Skytool
 ```
 
 Run Skytool
 
 ```bash
-  python3 Skytool.py
+python3 Skytool.py
 ```
 
 ## Import Library
