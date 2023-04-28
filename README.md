@@ -1,4 +1,4 @@
-# Skytool
+# Skytool Ver 1.2
 
 ## Tested On
 
