@@ -54,7 +54,7 @@ print ("                                                                        
 print ("    				create by SkypeG                                           ")
 print ("    								                                           ")
 print ("   				   SkyTool                                                     ")
-print ("                                   V1.1                                        ")
+print ("                                   V1.2                                        ")
 print ("                                                                               ")
 print ("  https://github.com/SkypeG                                                    ")
 print ("  https://www.youtube.com/@Skype112G/featured			                       ")
