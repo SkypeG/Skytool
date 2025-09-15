@@ -1,8 +1,9 @@
-# Skytool Ver 1.2
+# Skytool Ver 1.3
 
 ## Tested On
 
 - Windows 10
+- Windows 11
 - Ubuntu
 - Kali Linux
 
@@ -62,6 +63,10 @@ python3 Skytool.py
 - folium
 - tqdm
 - opencage
+- msvcrt
+- whois
+- subprocess
+- secrets
 
 ## Command
 *You can check it using the help command*
